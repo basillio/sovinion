@@ -1,5 +1,18 @@
 # Деплой агента «Парк Совиньон» на Railway
 
+## ДВЕ ВЕРСИИ АГЕНТА
+- **Бесплатная (рекомендуется): Gemini API** — файлы `main_gemini.py` + `requirements_gemini.txt`.
+  Ключ бесплатно в Google AI Studio (https://aistudio.google.com → Get API key, карта не нужна).
+  Лимиты free tier (модели Flash, до 1 500 запросов/день) для 1 запуска в неделю более чем достаточны.
+  Переменные: `GEMINI_API_KEY`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`.
+  Для деплоя переименуйте `main_gemini.py` → `main.py` и `requirements_gemini.txt` → `requirements.txt`.
+- **Платная: Claude API (Anthropic)** — файлы `main.py` + `requirements.txt`, инструкция ниже.
+
+Остаётся расход только на Railway (~$5/мес Hobby). Совсем бесплатная альтернатива хостингу —
+GitHub Actions: тот же скрипт можно запускать по cron в бесплатном воркфлоу (скажите — сделаю yml).
+
+---
+
 Агент раз в неделю собирает данные (сайт ЖК, DIM.RIA, веб-поиск через Claude API),
 формирует сводку и шлёт её в Telegram — сообщением и файлом .md.
 
