@@ -5,6 +5,6 @@
   },
   "deploy": {
     "startCommand": "python main_bot.py",
-    "restartPolicyType": "ALWAYS"
+    "restartPolicyType": "NEVER"
   }
 }
