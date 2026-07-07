@@ -4,7 +4,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": bash -c "while true; do python main_bot.py; sleep 5; done",
+    "startCommand": "bash -c \"while true; do python main_bot.py; echo 'bot exited, restarting in 5s'; sleep 5; done\"",
     "restartPolicyType": "NEVER"
   }
 }
