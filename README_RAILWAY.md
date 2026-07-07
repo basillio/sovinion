@@ -1,6 +1,18 @@
 # Деплой агента «Парк Совиньон» на Railway
 
-## ДВЕ ВЕРСИИ АГЕНТА
+## ИНТЕРАКТИВНЫЙ БОТ (выдача инфы по запросу) — РЕКОМЕНДУЕМЫЙ ВАРИАНТ
+Файлы: `main_bot.py` + `requirements_gemini.txt` + `railway_bot.json`.
+Бот работает 24/7 (long polling): команды /report, /prices, /news или свободный
+вопрос текстом («сколько стоит двушка?») — и сам шлёт полную сводку по понедельникам
+в 09:00 (Киев). Отвечает только чатам из `TELEGRAM_CHAT_ID` (можно несколько через запятую).
+
+Деплой: положите в репозиторий `main_bot.py` (переименовывать не нужно),
+`railway_bot.json` под именем `railway.json` (в нём startCommand `python main_bot.py`)
+и `requirements_gemini.txt` под именем `requirements.txt`. Переменные: `GEMINI_API_KEY`,
+`TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`. Cron в настройках Railway НЕ ставить —
+это постоянный worker. Настройки авто-сводки: `WEEKLY_DAY` (0=пн, -1=выкл), `WEEKLY_HOUR`.
+
+## ДВЕ ВЕРСИИ CRON-АГЕНТА (только еженедельная сводка, без запросов)
 - **Бесплатная (рекомендуется): Gemini API** — файлы `main_gemini.py` + `requirements_gemini.txt`.
   Ключ бесплатно в Google AI Studio (https://aistudio.google.com → Get API key, карта не нужна).
   Лимиты free tier (модели Flash, до 1 500 запросов/день) для 1 запуска в неделю более чем достаточны.
